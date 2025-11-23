@@ -3,12 +3,10 @@ import '../assets/Register.css';
 import background from '../assets/images/backgroundweb.jpg';
 import { Routes, Route } from 'react-router-dom';
 import { Link } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
-
-function Register() {
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [confisenha, setConfiSenha] = useState (''); 
+function Homepg() {
+ 
 
   return (
     <div className="bg">
@@ -21,4 +19,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Homepg;

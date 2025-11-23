@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-
+/* evita scroll e barras brancas */
 html, body, #root {
   width: 100%;
   height: 100%;
@@ -14,16 +14,17 @@ html, body, #root {
   background: black;
 }
 
+/* fundo */
 .bg {
   position: absolute;
   inset: 0;
-  background-image: url("./images/backgroundweb.jpg");
+  background-image: url(' background-image: url("./images/backgroundweb.jpg");');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-
+/* overlay roxo */
 .overlay {
   position: absolute;
   inset: 0;
@@ -31,7 +32,8 @@ html, body, #root {
   z-index: 1;
 }
 
-.content {
+/* CONTEÚDO CENTRALIZADO NA TELA */
+.contentRd {
   position: relative;
   z-index: 2;
   color: white;
@@ -54,16 +56,15 @@ html, body, #root {
 }
 
 /* caixa */
-.inputcontainer {
+.inputcontainerRd {
   background-color: rgba(0,0,0,0.25);
-  height: 475px;
+  height: 400px;
   width: 350px;
   border-radius: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  padding-top: 20px;
+  padding-top: 16px;
   gap: 16px;
   backdrop-filter: blur(2px);
   border: 2px solid #EEEEEE66;
@@ -72,7 +73,7 @@ html, body, #root {
 
 
 /* subtítulo dentro da caixa */
-.inputcontainer h2 {
+.inputcontainerRd h2 {
   color: white;
   margin-top: 2px;
   margin-bottom: 2px;
@@ -82,76 +83,56 @@ html, body, #root {
 
 }
 
-.inputcontainer p {
+.textRd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.textRd p {
+  font-size: 14px;
+  color: #fff;
+  margin: 16px 0;
+  font-weight: 450;
+  font-family: "Poppins", sans-serif;
+  max-width: 300px;   /* encaixa igual ao Figma */
+}
+
+
+.inputcontainerRd p {
   width: 100%;
   display: block;
   font-size: 16px;
   color: #fff;
-  text-align: left;      
-  margin: 6px;
+  text-align: center;      
+  margin: 36px;
   font-weight: 450; 
   font-family: "Poppins", sans-serif;
-
-}
-
-
-/* inputs */
-.inputcontainer input {
-  padding: 12px;
-  border-radius: 12px;
-  border: 2px solid #EEEEEE66;
-  background-color: rgba(0,0,0,0.25);
-  color: #FFFFFF;
-  outline: none;
-  font-size: 16px;
-  width: 280px;
-  height: 35px;
-  font-family: "Poppins", sans-serif;
-
-}
-
-.inputcontainer input::placeholder {
-  color: rgba(255,255,255,0.7);
-  font-size: 16px;
-  font-weight: 550;
 }
 
 
 
-.inputcontainer button {
-  background-color: #211951;
-  color: #FFFFFF;
-  display: block;
-  text-align: center;
-  height: 36px;
-  width: 124px;
-  border-radius: 15px;
-  border-color: #211951;
+
+.circleButton {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  display: flex;
   align-items: center;
-  font-weight: 450;
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  justify-content: center; 
+  justify-content: center;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  font-size: 30px;
+  color: white;
   cursor: pointer;
-  
+  transition: .2s ease;
 }
 
-.registerrouter {
-  width: 100%;
-  display: block;
-  font-size: 16px;
-  color: #fff;
-  text-align: left;     
-  margin: 6px;   
-  text-align: center;
-  font-weight: 450;
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-}
+.circleButton:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
+}   
 
-.registerrouter a {
-  text-decoration-line: none;
-  color: #fff;
-  text-align: center;
-  font-weight: 700;
-}
+

@@ -47,6 +47,10 @@ function Login() {
           <h3 className="registerrouter">
             Não tem conta? <a href="Register">Registre-se</a>
           </h3>
+
+          <h4 className="registerrouter"> 
+            <a href='Redfine'>Esqueceu a senha?</a>
+          </h4>
         </div>
       </div>
     </div>
