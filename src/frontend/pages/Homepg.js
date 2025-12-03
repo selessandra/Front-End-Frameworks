@@ -1,314 +1,124 @@
 import React, { useState } from "react";
+import "../assets/Homepg.css";
 
 function Homepg() {
-  const background = "/assets/background.jpg";
+  const [featuredIndex, setFeaturedIndex] = useState(0);
+  const featuredDecks = [
+    { name: "Mega Knight Cycle", winRate: "67%", usage: "High" },
+    { name: "Log Bait 2.9", winRate: "64%", usage: "Very High" },
+    { name: "Golem Beatdown", winRate: "62%", usage: "Medium" },
+    { name: "X-Bow 3.0", winRate: "59%", usage: "High" }
+  ];
 
-  /************************************
-   * ESTADO DO CARROSSEL PRO PLAYERS
-   ************************************/
-  const [proIndex, setProIndex] = useState(0);
-  const proDecks = ["Pro 1", "Pro 2", "Pro 3", "Pro 4", "Pro 5"];
-  const cardWidth = 300;
+  const featuredPlayers = [
+    { name: "Surgical Goblin", trophies: "8,432", clan: "Nova Esports" },
+    { name: "Mortén", trophies: "8,321", clan: "SK Gaming" },
+    { name: "Mohamed Light", trophies: "8,267", clan: "Team Queso" },
+    { name: "Anaban", trophies: "8,198", clan: "Tribe Gaming" }
+  ];
 
-  const nextPro = () => {
-    if (proIndex < proDecks.length - 1) setProIndex(proIndex + 1);
+  const nextFeatured = () => {
+    setFeaturedIndex((prev) => (prev + 1) % featuredDecks.length);
   };
 
-  const prevPro = () => {
-    if (proIndex > 0) setProIndex(proIndex - 1);
+  const prevFeatured = () => {
+    setFeaturedIndex((prev) => (prev - 1 + featuredDecks.length) % featuredDecks.length);
   };
-
-  /************************************
-   * ESTILOS
-   ************************************/
-  const styles = {
-    page: {
-      display: "flex",
-      width: "100%",
-      height: "100vh",
-      overflow: "hidden",
-      backgroundColor: "black",
-      color: "white",
-    },
-
-    column: {
-      width: "50%",
-      height: "100%",
-      position: "relative",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      padding: 20,
-    },
-
-    overlay: {
-      position: "absolute",
-      width: "100%",
-      height: "100%",
-      top: 0,
-      left: 0,
-      backgroundColor: "rgba(0,0,0,0.45)",
-    },
-
-    // LEFT SIDE
-    hometext: {
-      fontSize: 32,
-      fontWeight: "bold",
-      marginTop: 20,
-      zIndex: 2,
-    },
-    userImg: {
-      width: 180,
-      height: 180,
-      borderRadius: "50%",
-      backgroundColor: "#ffffff22",
-    },
-    infoCenter: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      gap: 5,
-      marginTop: 10,
-      zIndex: 2,
-    },
-    name: {
-      fontSize: 26,
-      fontWeight: "bold",
-      color: "white",
-    },
-    info: {
-      fontSize: 18,
-    },
-    top: {
-      fontSize: 18,
-    },
-    sectionTitle: {
-      fontSize: 24,
-      fontWeight: "bold",
-      marginTop: 20,
-    },
-    deckBox: {
-      width: "90%",
-      height: 150,
-      backgroundColor: "rgba(255,255,255,0.25)",
-      borderRadius: 12,
-      marginTop: 10,
-    },
-
-    // RIGHT SIDE
-    decksTitle: {
-      fontSize: 26,
-      fontWeight: "bold",
-      marginTop: 20,
-      zIndex: 2,
-      textAlign: "center",
-    },
-
-    // carrossel
-    carouselSection: {
-      marginTop: 20,
-      width: "100%",
-      zIndex: 2,
-      display: "flex",
-      justifyContent: "center",
-    },
-
-    carouselContainer: {
-      width: "100%",
-      maxWidth: 700,
-      height: 220,
-      position: "relative",
-      display: "flex",
-      alignItems: "center",
-      overflow: "hidden",
-    },
-
-    carouselContent: {
-      display: "flex",
-      transition: "transform 0.3s ease-in-out",
-    },
-
-    card: {
-      width: 300,
-      height: 200,
-      borderRadius: 20,
-      backgroundColor: "rgba(0,0,0,0.5)",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      marginRight: 10,
-    },
-    cardTitle: {
-      fontSize: 22,
-      fontWeight: "bold",
-      color: "white",
-    },
-
-    arrowLeft: {
-      position: "absolute",
-      left: 10,
-      fontSize: 38,
-      cursor: "pointer",
-      zIndex: 10,
-      userSelect: "none",
-    },
-    arrowRight: {
-      position: "absolute",
-      right: 10,
-      fontSize: 38,
-      cursor: "pointer",
-      zIndex: 10,
-      userSelect: "none",
-    },
-
-    bottomBarRight: {
-      position: "absolute",
-      bottom: 0,
-      width: "100%",
-      height: 80,
-      backgroundColor: "rgba(0,0,0,0.6)",
-      display: "flex",
-      justifyContent: "space-around",
-      alignItems: "center",
-      zIndex: 2,
-    },
-    footerLabel: {
-      color: "white",
-      fontSize: 14,
-      marginTop: 2,
-    },
-  };
-
-  /************************************
-   * RENDERIZAÇÃO
-   ************************************/
 
   return (
-    
-    <div style={styles.page}>
-
-      {/** =======================================================
-       *  LADO ESQUERDO — PERFIL (PERFEITO COMO VOCÊ PEDIU)
-       *  ======================================================= */}
-      <div
-        style={{
-          ...styles.column,
-          backgroundImage: `url(${background})`,
-        }}
-      >
-        <div style={styles.overlay}></div>
-
-        <h1 style={styles.hometext}>Perfil</h1>
-
-        <div style={styles.infoCenter}>
-          <span style={styles.info}>Nv: --</span>
+    <div className="home-page">
+      <div className="hero-section">
+        <div className="hero-overlay">
+          <h1 className="hero-title">Royale Deck Manager</h1>
+          <p className="hero-subtitle">Analyze decks, find players, and improve your gameplay</p>
         </div>
-
-        <div style={styles.userImg}></div>
-
-        <div style={styles.infoCenter}>
-          <span style={styles.name}> Jogador </span>
-          <span style={styles.info}>Clã: --</span>
-        </div>
-
-        <div style={styles.infoCenter}>
-          <span style={styles.top}>Troféus: -- Vitórias: --</span>
-          <span style={styles.top}>Top Troféus: -- Derrotas: --</span>
-        </div>
-
-        <span style={styles.sectionTitle}>Top Decks</span>
-        <div style={styles.deckBox}></div>
       </div>
 
-      {/** =======================================================
-       *  LADO DIREITO — DECKS (FIÉL AO SEU CÓDIGO)
-       *  ======================================================= */}
-      <div
-        style={{
-          ...styles.column,
-          backgroundImage: `url(${background})`,
-        }}
-      >
-        <div style={styles.overlay}></div>
-
-        {/**----------------------------------------------  
-         *  DECKS POPULARES (sem carrossel)
-         *----------------------------------------------*/}
-        <h2 style={styles.decksTitle}>Decks Populares do Dia</h2>
-
-        <div
-          style={{
-            width: "90%",
-            height: 200,
-            backgroundColor: "rgba(0,0,0,0.5)",
-            borderRadius: 20,
-            marginTop: 20,
-            zIndex: 2,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <span style={{ color: "white", fontSize: 22, fontWeight: 700 }}>
-            Deck Popular do Dia
-          </span>
+      <div className="home-content">
+        {/* Quick Stats */}
+        <div className="quick-stats">
+          <div className="stat-card">
+            <div className="stat-icon">🃏</div>
+            <div className="stat-number">1,250+</div>
+            <div className="stat-label">Decks Analyzed</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">👥</div>
+            <div className="stat-number">5,000+</div>
+            <div className="stat-label">Players Tracked</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">📈</div>
+            <div className="stat-number">98%</div>
+            <div className="stat-label">Accuracy Rate</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon">⚡</div>
+            <div className="stat-number">Real-time</div>
+            <div className="stat-label">Updates</div>
+          </div>
         </div>
 
-        {/**----------------------------------------------  
-         *   PRO PLAYER DECKS (carrossel funcional)
-         *----------------------------------------------*/}
-        <h2 style={{ ...styles.decksTitle, marginTop: 40 }}>
-          Pro Player Decks
-        </h2>
-
-        <div style={styles.carouselSection}>
-          <div style={styles.carouselContainer}>
-
-            {proIndex > 0 && (
-              <div style={styles.arrowLeft} onClick={prevPro}>
-                ‹
+        {/* Featured Deck */}
+        <section className="featured-section">
+          <h2 className="section-title">Featured Deck of the Day</h2>
+          <div className="featured-carousel">
+            <button className="carousel-btn prev" onClick={prevFeatured}>‹</button>
+            
+            <div className="featured-card">
+              <div className="deck-header">
+                <h3>{featuredDecks[featuredIndex].name}</h3>
+                <span className="deck-badge">🔥 Hot</span>
               </div>
-            )}
-
-            <div
-              style={{
-                ...styles.carouselContent,
-                width: cardWidth * proDecks.length,
-                transform: `translateX(${-proIndex * cardWidth}px)`,
-              }}
-            >
-              {proDecks.map((d) => (
-                <div key={d} style={styles.card}>
-                  <span style={styles.cardTitle}>{d}</span>
+              <div className="deck-stats">
+                <div className="stat">
+                  <span className="stat-label">Win Rate:</span>
+                  <span className="stat-value">{featuredDecks[featuredIndex].winRate}</span>
                 </div>
-              ))}
-            </div>
-
-            {proIndex < proDecks.length - 1 && (
-              <div style={styles.arrowRight} onClick={nextPro}>
-                ›
+                <div className="stat">
+                  <span className="stat-label">Usage:</span>
+                  <span className="stat-value">{featuredDecks[featuredIndex].usage}</span>
+                </div>
               </div>
-            )}
+              <button className="view-deck-btn">View Deck Details</button>
+            </div>
+            
+            <button className="carousel-btn next" onClick={nextFeatured}>›</button>
           </div>
-        </div>
+        </section>
 
-        {/** Bottom bar */}
-        <div style={styles.bottomBarRight}>
-          <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: 28, color: "#4B1664" }}>🃏</div>
-            <div style={styles.footerLabel}>Decks</div>
+        {/* Top Players */}
+        <section className="players-section">
+          <h2 className="section-title">Top Players This Week</h2>
+          <div className="players-grid">
+            {featuredPlayers.map((player, index) => (
+              <div key={index} className="player-card">
+                <div className="player-rank">{index + 1}</div>
+                <div className="player-avatar">👑</div>
+                <div className="player-info">
+                  <h4>{player.name}</h4>
+                  <p>{player.trophies} trophies</p>
+                  <span className="player-clan">{player.clan}</span>
+                </div>
+              </div>
+            ))}
           </div>
+        </section>
 
-          <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: 28, color: "white" }}>👤</div>
-            <div style={styles.footerLabel}>Perfil</div>
+        {/* CTA Sections */}
+        <div className="cta-sections">
+          <div className="cta-card decks-cta">
+            <div className="cta-icon">🃏</div>
+            <h3>Explore Decks</h3>
+            <p>Browse and analyze the best decks from top players</p>
+            <a href="/decks" className="cta-btn">View All Decks →</a>
           </div>
-
-          <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: 28, color: "white" }}>⚙️</div>
-            <div style={styles.footerLabel}>Opções</div>
+          
+          <div className="cta-card finder-cta">
+            <div className="cta-icon">🔍</div>
+            <h3>Find Players</h3>
+            <p>Search for players and analyze their performance</p>
+            <a href="/player-finder" className="cta-btn">Find Players →</a>
           </div>
         </div>
       </div>

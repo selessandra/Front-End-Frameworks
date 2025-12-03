@@ -10,7 +10,7 @@ import Redfined from "./frontend/pages/Redfined";
 export default function Router() {
   return (
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<Homepg/>} />
       <Route path="/register" element={<Register />} />
       <Route path="/Homepg" element={<Homepg />} />
       <Route path="/Redfine" element={<Redfine />} />
