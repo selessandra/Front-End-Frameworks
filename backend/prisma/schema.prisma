@@ -1,0 +1,162 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model ResetToken {
+  id        Int      @id @default(autoincrement())
+  token     String
+  expiresAt DateTime
+  usuario   Usuario  @relation(fields: [usuarioId], references: [id_usuario], onDelete: Cascade)
+  usuarioId Int
+
+  @@index([usuarioId])
+}
+
+model Usuario {
+  id_usuario Int      @id @default(autoincrement())
+  nome       String   @db.VarChar(50)
+  email      String   @unique @db.VarChar(100)
+  senha      String   @db.VarChar(255)
+  criado_em  DateTime @default(now())
+
+  jogador     Jogador?
+  resetTokens ResetToken[]
+}
+
+model Jogador {
+  id_jogador Int     @id @default(autoincrement())
+  clash_id   String  @unique @db.VarChar(18)
+  nome       String  @db.VarChar(50)
+  nivel      Int
+  trofeus    Int
+  pais       String? @db.VarChar(10)
+
+  id_usuario Int     @unique
+  usuario    Usuario @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade)
+
+  id_cla Int?
+  cla    Cla? @relation(fields: [id_cla], references: [id_cla])
+
+  decks       Deck[]
+  estatistica Estatistica_Jogador?
+  logs        Log_Acao[]
+  partidas1   Partida[]            @relation("Jogador1")
+  partidas2   Partida[]            @relation("Jogador2")
+  torneios    Torneio_Jogador[]
+}
+
+model Cla {
+  id_cla    Int       @id @default(autoincrement())
+  nome      String    @db.VarChar(50)
+  descricao String    @db.VarChar(255)
+  nivel     Int
+  regiao    String    @db.VarChar(20)
+  jogadores Jogador[]
+}
+
+model Deck {
+  id_deck    Int          @id @default(autoincrement())
+  nome       String       @db.VarChar(50)
+  id_jogador Int
+  jogador    Jogador      @relation(fields: [id_jogador], references: [id_jogador], onDelete: Cascade)
+  cartas     Deck_Carta[]
+}
+
+model Carta {
+  id_carta     Int          @id @default(autoincrement())
+  nome         String       @db.VarChar(50)
+  tipo         String       @db.VarChar(30)
+  raridade     String       @db.VarChar(20)
+  elixir       Int
+  nivel_maximo Int
+  tipoCartaId  Int?
+  tipoCarta    Tipo_Carta?  @relation(fields: [tipoCartaId], references: [id_tipo])
+  decks        Deck_Carta[]
+}
+
+model Deck_Carta {
+  id_deck     Int
+  id_carta    Int
+  nivel_carta Int
+
+  deck  Deck  @relation(fields: [id_deck], references: [id_deck], onDelete: Cascade)
+  carta Carta @relation(fields: [id_carta], references: [id_carta])
+
+  @@id([id_deck, id_carta])
+}
+
+model Partida {
+  id_partida  Int      @id @default(autoincrement())
+  data_hora   DateTime @default(now())
+  resultado   String   @db.VarChar(20)
+  duracao     Int
+  id_jogador1 Int
+  id_jogador2 Int
+  id_arena    Int
+
+  jogador1 Jogador @relation("Jogador1", fields: [id_jogador1], references: [id_jogador], onDelete: Cascade)
+  jogador2 Jogador @relation("Jogador2", fields: [id_jogador2], references: [id_jogador], onDelete: Cascade)
+  arena    Arena   @relation(fields: [id_arena], references: [id_arena])
+}
+
+model Arena {
+  id_arena           Int       @id @default(autoincrement())
+  nome               String    @db.VarChar(50)
+  nivel_minimo       Int
+  trofeus_requeridos Int
+  partidas           Partida[]
+}
+
+model Torneio {
+  id_torneio  Int               @id @default(autoincrement())
+  nome        String            @db.VarChar(50)
+  premiacao   String            @db.VarChar(100)
+  data_inicio DateTime
+  data_fim    DateTime
+  jogadores   Torneio_Jogador[]
+}
+
+model Torneio_Jogador {
+  id_torneio Int
+  id_jogador Int
+  colocacao  Int
+  pontuacao  Int
+
+  torneio Torneio @relation(fields: [id_torneio], references: [id_torneio])
+  jogador Jogador @relation(fields: [id_jogador], references: [id_jogador], onDelete: Cascade)
+
+  @@id([id_torneio, id_jogador])
+}
+
+model Estatistica_Jogador {
+  id_estatistica Int   @id @default(autoincrement())
+  id_jogador     Int   @unique
+  vitorias       Int
+  derrotas       Int
+  empates        Int
+  taxa_vitoria   Float
+
+  jogador Jogador @relation(fields: [id_jogador], references: [id_jogador], onDelete: Cascade)
+}
+
+model Tipo_Carta {
+  id_tipo   Int     @id @default(autoincrement())
+  nome_tipo String  @db.VarChar(30)
+  descricao String  @db.VarChar(255)
+  cartas    Carta[]
+}
+
+model Log_Acao {
+  id_log     Int      @id @default(autoincrement())
+  id_jogador Int
+  acao       String   @db.VarChar(50)
+  data_hora  DateTime @default(now())
+  detalhes   String   @db.VarChar(255)
+
+  jogador Jogador @relation(fields: [id_jogador], references: [id_jogador], onDelete: Cascade)
+}
