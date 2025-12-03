@@ -6,6 +6,8 @@ import Redfine from "./frontend/pages/Redfine";
 import RedfineCod from "./frontend/pages/RedfineCod"; 
 import RedfinePassword from "./frontend/pages/RedfinePassword"; 
 import Redfined from "./frontend/pages/Redfined"; 
+import HomePlayer from "./frontend/pages/HomePlayer";
+
 
 export default function Router() {
   return (
@@ -17,6 +19,8 @@ export default function Router() {
       <Route path="/RedfineCod" element={<RedfineCod />} />
       <Route path="/RedfinePassword" element={<RedfinePassword/>} />
       <Route path="/Redfined" element={<Redfined/>} />
+      <Route path="/HomePlayer" element={<HomePlayer/>} />
+
     </Routes>
   );
 }
