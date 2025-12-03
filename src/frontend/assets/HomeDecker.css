@@ -1,0 +1,201 @@
+/* src/frontend/pages/HomeDecker.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.home-decker-container {
+    width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    /* OPÇÃO 1: Use cor sólida em vez de imagem */
+    background: linear-gradient(135deg, #120e2f 0%, #211951 100%);
+    
+    /* OPÇÃO 2: Se você TEM a imagem, ajuste o caminho */
+    /* 
+    background: 
+        linear-gradient(rgba(18, 14, 47, 0.56), rgba(18, 14, 47, 0.56)),
+        url('../assets/images/backgroundweb.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    */
+}
+
+.content-scroll {
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    overflow-y: auto;
+}
+
+/* Seção de Leaders */
+.leaders-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.section-title {
+    color: white;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 4px 4px 5px rgba(69, 6, 147, 0.7);
+    font-weight: 700;
+}
+
+/* Loading */
+.loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-indicator p {
+    color: white;
+    font-size: 18px;
+}
+
+/* Bottom Navigation Bar */
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    background-color: rgba(11, 10, 10, 0.47);
+    border-top: 2px solid rgba(238, 238, 238, 0.4);
+    border-left: 2px solid rgba(238, 238, 238, 0.4);
+    border-right: 2px solid rgba(238, 238, 238, 0.4);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.nav-button:hover {
+    transform: translateY(-5px);
+}
+
+.nav-button.active {
+    position: relative;
+}
+
+.nav-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    width: 40px;
+    height: 3px;
+    background-color: #4B1664;
+    border-radius: 2px;
+}
+
+.nav-icon {
+    color: white;
+    font-size: 42px;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.nav-button.active .nav-icon {
+    color: #4B1664;
+}
+
+.nav-button:hover .nav-icon {
+    color: #6d28d9;
+}
+
+.nav-text {
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .content-scroll {
+        padding: 15px;
+        gap: 30px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .nav-icon {
+        font-size: 36px;
+    }
+    
+    .bottom-bar {
+        height: 90px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-scroll {
+        padding: 10px;
+        gap: 20px;
+    }
+    
+    .section-title {
+        font-size: 20px;
+    }
+    
+    .nav-icon {
+        font-size: 32px;
+    }
+    
+    .bottom-bar {
+        height: 80px;
+    }
+    
+    .nav-text {
+        font-size: 10px;
+    }
+}
