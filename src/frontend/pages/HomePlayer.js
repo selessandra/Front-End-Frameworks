@@ -176,7 +176,7 @@ export default function HomePlayer() {
 
         <main style={styles.homeContainer}>
 
-          {/* INFO SUPERIOR MUITO COMPACTA */}
+          {/* INFO SUPERIOR */}
           <div style={styles.compactHeader}>
             <div style={styles.photoAndLevel}>
               <div style={styles.levelBadge}>
@@ -210,7 +210,7 @@ export default function HomePlayer() {
               </button>
             </div>
 
-            {/* NOME E CLÃ AO LADO DA FOTO */}
+            {/* NOME E CLÃ */}
             <div style={styles.nameAndClan}>
               <h2 style={styles.playerName}>{nome}</h2>
               <p style={styles.clanText}>
@@ -220,7 +220,7 @@ export default function HomePlayer() {
             </div>
           </div>
 
-          {/* ESTATÍSTICAS MUITO COMPACTAS */}
+          {/* ESTATÍSTICAS  */}
           <div style={styles.statsContainer}>
             <div style={styles.statsGrid}>
               <div style={styles.statItemMini}>
@@ -249,7 +249,7 @@ export default function HomePlayer() {
             </div>
           </div>
 
-          {/* DECK ATUAL - MUITO MAIS PARA CIMA */}
+          {/* DECK ATUAL  */}
           <section style={styles.deckWrapper}>
             <h3 style={styles.deckTitle}>Deck Atual</h3>
             {renderDeckGrid()}
@@ -279,7 +279,7 @@ export default function HomePlayer() {
           </button>
 
           <button 
-            onClick={() => navigate('/Options')}
+            onClick={() => navigate('/HomeOptions')}
             style={styles.navButton}
             aria-label="Configurações"
             type="button"
@@ -480,25 +480,26 @@ const styles = {
     textAlign: 'center',
   },
   
-  // DECK WRAPPER - MUITO MAIS PARA CIMA
+  // DECK WRAPPER - MAIS PARA CIMA
   deckWrapper: {
     backgroundColor: 'rgba(255, 255, 255, 0.08)',
-    borderRadius: '16px',
-    padding: '16px',
+    borderRadius: '20px',
+    padding: '60px',
     width: '95%',
     maxWidth: '500px',
-    marginTop: '5px',
+    marginTop: '1px',
     backdropFilter: 'blur(10px)',
     border: '1px solid rgba(255, 255, 255, 0.1)',
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    maxHeight: "400px"
   },
   deckTitle: {
     color: 'white',
     textAlign: 'center',
-    marginBottom: '16px',
+    marginBottom: '1px',
     fontSize: '20px',
     fontWeight: 'bold',
   },
