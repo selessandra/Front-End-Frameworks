@@ -11,6 +11,7 @@ import HomeDecker from './frontend/pages/HomeDecker';
 import HomePlayer from './frontend/pages/HomePlayer';
 import Login from "./frontend/pages/Login";
 
+import Options from "./frontend/pages/Options";
 export default function Router() {
   return (
     <Routes>
@@ -27,6 +28,7 @@ export default function Router() {
       <Route path="/Login" element={<Login />} />
       
 
+      <Route path="/Options" element={<Options/>} />
     </Routes>
   );
 }

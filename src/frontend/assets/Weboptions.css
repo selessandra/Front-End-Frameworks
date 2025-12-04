@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base layout */
+html, body, #root, .options-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Background */
+.bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('./images/backgroundweb.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(33, 25, 81, 0.4);
+  z-index: 1;
+}
+
+/* Main content */
+.content-options {
+  position: relative;
+  z-index: 2;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 32px;
+}
+
+/* Title */
+.title {
+  font-size: 64px;
+  text-shadow: 2px 2px 4px purple;
+  margin: 0;
+  text-align: center;
+}
+
+/* Options box */
+.options-box {
+  background-color: rgba(0, 0, 0, 0.25);
+  height: 500px;
+  width: 350px;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 0;
+  gap: 20px;
+  backdrop-filter: blur(2px);
+  border: 2px solid #EEEEEE66;
+}
+
+/* User photo section */
+.user-photo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.user-placeholder {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.user-placeholder .material-icons {
+  font-size: 120px;
+  color: white;
+}
+
+/* User name */
+.user-name {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Setting items */
+.setting-link {
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.setting-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 280px;
+  height: 48px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #EEEEEE66;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 8px 0;
+}
+
+.setting-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.02);
+}
+
+.setting-item span {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Bottom navigation */
+.bottom-nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  background-color: rgba(33, 25, 81, 0.8);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.nav-item .material-icons {
+  font-size: 36px;
+  margin-bottom: 4px;
+}
+
+.nav-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-item.active {
+  color: #4B1664;
+}
+
+.nav-item.active .nav-label {
+  color: #4B1664;
+  font-weight: 600;
+}
+
+.nav-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .title {
+    font-size: 48px;
+  }
+  
+  .options-box {
+    width: 320px;
+    height: 480px;
+  }
+  
+  .user-photo,
+  .user-placeholder {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 36px;
+  }
+  
+  .options-box {
+    width: 300px;
+    height: 460px;
+  }
+}
