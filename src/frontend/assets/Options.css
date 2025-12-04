@@ -1,0 +1,357 @@
+.options-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.options-background {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.options-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.options-title {
+  position: relative;
+  color: white;
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.options-main-content {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  padding-bottom: 5rem;
+  z-index: 1;
+  overflow-y: auto;
+}
+
+.options-profile-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.options-photo-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.options-photo-button {
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.options-user-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 215, 0, 0.5);
+}
+
+.options-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgba(255, 215, 0, 0.3);
+}
+
+.options-user-icon {
+  width: 60px;
+  height: 60px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.options-camera-icon {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: rgba(75, 22, 100, 0.9);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffd700;
+  font-size: 0.875rem;
+  border: 2px solid #ffd700;
+}
+
+.options-user-name {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.options-link {
+  text-decoration: none;
+}
+
+.options-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.options-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.options-icon {
+  color: #ffd700;
+  font-size: 1.25rem;
+  width: 24px;
+  height: 24px;
+}
+
+.options-text {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  flex: 1;
+}
+
+.options-arrow {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Barra de navegação inferior */
+.options-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0;
+  z-index: 1000;
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.options-nav-button {
+  background-color: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.options-active-nav-button {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #4B1664;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  min-width: 80px;
+  box-shadow: 0 4px 15px rgba(75, 22, 100, 0.2);
+}
+
+.options-nav-icon {
+  color: rgba(255, 255, 255, 0.8);
+  width: 28px;
+  height: 28px;
+  transition: all 0.3s ease;
+}
+
+.options-active-icon {
+  color: #4B1664;
+  width: 28px;
+  height: 28px;
+  transition: all 0.3s ease;
+}
+
+.options-nav-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.options-active-label {
+  color: #4B1664;
+  font-size: 12px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Estilos de hover */
+.option-item-hover:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-2px) !important;
+  border-color: rgba(255, 215, 0, 0.3) !important;
+}
+
+.nav-button-hover:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-2px) !important;
+}
+
+.photo-button-hover:hover {
+  transform: scale(1.05) !important;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .options-profile-card {
+    padding: 1.25rem;
+  }
+  
+  .options-photo-button {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .options-user-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .options-camera-icon {
+    width: 25px;
+    height: 25px;
+    font-size: 0.75rem;
+  }
+  
+  .options-item {
+    padding: 0.875rem 1rem;
+  }
+  
+  .options-nav-button,
+  .options-active-nav-button {
+    min-width: 70px;
+    padding: 6px 15px;
+  }
+  
+  .options-nav-icon,
+  .options-active-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 400px) {
+  .options-profile-card {
+    padding: 1rem;
+  }
+  
+  .options-photo-button {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .options-user-name {
+    font-size: 1.25rem;
+  }
+  
+  .options-item {
+    padding: 0.75rem 0.875rem;
+  }
+  
+  .options-text {
+    font-size: 0.875rem;
+  }
+  
+  .options-nav-button,
+  .options-active-nav-button {
+    min-width: 60px;
+    padding: 5px 10px;
+  }
+  
+  .options-nav-icon,
+  .options-active-icon {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .options-nav-label,
+  .options-active-label {
+    font-size: 11px;
+  }
+}

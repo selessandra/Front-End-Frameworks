@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import '../assets/Login.css';
+import { FiEye, FiEyeOff, FiMail, FiLock, FiUser, FiArrowLeft } from 'react-icons/fi';
 import api from "../services/api";
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import '../assets/Login.css';
 
 const backgroundImage = require('../assets/images/backgroundweb.jpg');
 
@@ -15,7 +15,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Testa conexão com o backend
     const testConnection = async () => {
       try {
         const response = await api.get('/usuarios/health');
@@ -31,7 +30,6 @@ const Login = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
 
-    // Evento beforeunload
     const handleBeforeUnload = (e) => {
       e.preventDefault();
       e.returnValue = 'Deseja realmente sair?';
@@ -82,7 +80,6 @@ const Login = () => {
     try {
       console.log('📤 Enviando login para:', `${api.defaults.baseURL}/usuarios/login`);
       
-      
       const response = await api.post("/usuarios/login", {
         email: emailfield,
         senha: senhafield
@@ -100,12 +97,6 @@ const Login = () => {
 
     } catch (err) {
       console.error('❌ Erro no login:', err);
-      console.error('Detalhes:', {
-        message: err.message,
-        code: err.code,
-        response: err.response?.data,
-        status: err.response?.status
-      });
       
       if (err.code === 'ECONNABORTED') {
         setError('⏱️ Timeout: O servidor demorou muito para responder.');
@@ -131,7 +122,6 @@ const Login = () => {
     }
   };
 
-  // Para permitir submit com Enter
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !loading) {
       handleLogin();
@@ -139,88 +129,117 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
+    <div className="login-container">
       <div 
-        className="image-background"
+        className="login-background-image"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div className="viewcontainer">
-          
-          <div className="header">
-            <h1 className="text-logo">Veasy</h1>
+        <div className="login-overlay" />
+        
+        <button 
+          onClick={() => navigate(-1)}
+          className="login-back-button back-button"
+        >
+          <FiArrowLeft className="login-back-icon" />
+        </button>
+
+        <main className="login-main-content">
+          <div className="login-header">
+            <h1 className="login-logo">
+              <span className="login-logo-gradient">CLASH</span>
+              <span className="login-logo-highlight">HUB</span>
+            </h1>
+            <p className="login-subtitle">Bem-vindo de volta!</p>
           </div>
 
-          <div className="forms">
-            <h2 className="textocontainer">Entrar</h2>
+          <div className="login-card">
+            <div className="login-card-header">
+              <FiUser className="login-card-icon" />
+              <h2 className="login-card-title">Entrar</h2>
+              <p className="login-card-subtitle">
+                Acesse sua conta para continuar
+              </p>
+            </div>
 
             {error && (
-              <div className="error-message" style={{
-                background: 'rgba(255, 100, 100, 0.2)',
-                border: '2px solid #ff5555',
-                color: '#ffdddd',
-                padding: '12px',
-                borderRadius: '10px',
-                marginBottom: '20px',
-                textAlign: 'center',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}>
-                {error}
+              <div className="login-error-container error-message">
+                <span className="login-error-text">{error}</span>
               </div>
             )}
 
-            <label className="campos"> Email: </label>
-            <input
-              className="field"
-              type="email"
-              placeholder="SeuEmail@email.com"
-              value={emailfield}
-              onChange={(e) => setEmailField(e.target.value)}
-              onKeyPress={handleKeyPress}
-              disabled={loading}
-            />
+            <div className="login-form-container">
+              <div className="login-input-group">
+                <label className="login-input-label">
+                  <FiMail className="login-label-icon" />
+                  Email
+                </label>
+                <input
+                  type="email"
+                  placeholder="seu@email.com"
+                  value={emailfield}
+                  onChange={(e) => setEmailField(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  disabled={loading}
+                  className="login-input"
+                />
+              </div>
 
-            <label className="campos"> Senha: </label>
-            <div className="password-input-container">
-              <input
-                className="field password-field"
-                type={showSenha ? "text" : "password"}
-                placeholder="Senha Super Segura"
-                value={senhafield}
-                onChange={(e) => setSenhaField(e.target.value)}
-                onKeyPress={handleKeyPress}
+              <div className="login-input-group">
+                <label className="login-input-label">
+                  <FiLock className="login-label-icon" />
+                  Senha
+                </label>
+                <div className="login-password-input-wrapper">
+                  <input
+                    type={showSenha ? "text" : "password"}
+                    placeholder="Digite sua senha"
+                    value={senhafield}
+                    onChange={(e) => setSenhaField(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    disabled={loading}
+                    className="login-input"
+                  />
+                  <button 
+                    type="button"
+                    onClick={() => setShowSenha(!showSenha)}
+                    className="login-toggle-button toggle-button"
+                    disabled={loading}
+                  >
+                    {showSenha ? <FiEyeOff /> : <FiEye />}
+                  </button>
+                </div>
+              </div>
+
+              <button 
+                onClick={handleLogin}
                 disabled={loading}
-              />
-              <button
-                type="button"
-                onClick={() => setShowSenha(!showSenha)}
-                className="password-toggle"
-                disabled={loading}
+                className="login-button"
+                style={{ opacity: loading ? 0.7 : 1 }}
               >
-                {showSenha ? <FaEyeSlash /> : <FaEye />}
+                {loading ? (
+                  <span className="login-loading-text">Carregando...</span>
+                ) : (
+                  <>
+                    <FiUser className="login-button-icon" />
+                    <span className="login-button-text">Entrar</span>
+                  </>
+                )}
               </button>
+
+              <div className="login-links-container">
+                <Link to="/Redfine" className="login-link">
+                  Esqueceu a senha?
+                </Link>
+                <div className="login-register-container">
+                  <span className="login-register-text">Não tem conta? </span>
+                  <Link to="/Register" className="login-register-link">
+                    Registre-se
+                  </Link>
+                </div>
+              </div>
             </div>
-
-            <button 
-              className="button" 
-              onClick={handleLogin}
-              disabled={loading}
-              style={loading ? { opacity: 0.7, cursor: 'not-allowed' } : {}}
-            >
-              <span className="button-text">
-                {loading ? 'Carregando...' : 'Entrar'}
-              </span>
-            </button>
-
-            <Link to="/Redfine" className="forgot-password-link">
-              Esqueceu a Senha?
-            </Link>
-
-            <p className="register-text">
-              Não tem conta? <Link to="/Register" className="register-link">Registre-se</Link>
-            </p>
           </div>
-        </div>
+        </main>
       </div>
     </div>
   );

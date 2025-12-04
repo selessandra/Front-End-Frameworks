@@ -1,0 +1,343 @@
+/* DeleteAccount.css */
+
+.delete-account-container {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.delete-account-background {
+	flex: 1;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+
+.delete-account-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.7);
+}
+
+.delete-account-back-button {
+	position: absolute;
+	top: 0.75rem;
+	left: 0.75rem;
+	background: rgba(255, 255, 255, 0.1);
+	border: none;
+	border-radius: 50%;
+	width: 35px;
+	height: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	cursor: pointer;
+	z-index: 10;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	transition: all 0.3s ease;
+}
+
+.delete-account-back-icon {
+	font-size: 1.1rem;
+}
+
+.delete-account-main-content {
+	position: relative;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.delete-account-header {
+	text-align: center;
+	margin-bottom: 0.75rem;
+	flex-shrink: 0;
+}
+
+.delete-account-logo {
+	font-size: 2rem;
+	font-weight: 900;
+	letter-spacing: 0.05em;
+	margin-bottom: 0.125rem;
+	text-shadow: 0 0 15px rgba(75, 22, 100, 0.8);
+}
+
+.delete-account-logo-gradient {
+	background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.delete-account-logo-highlight {
+	color: #ffd700;
+	text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.delete-account-subtitle {
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 0.8rem;
+	letter-spacing: 0.05em;
+}
+
+.delete-account-card {
+	background: rgba(255, 255, 255, 0.08);
+	backdrop-filter: blur(15px);
+	-webkit-backdrop-filter: blur(15px);
+	border-radius: 0.875rem;
+	padding: 1.5rem;
+	width: 100%;
+	max-width: 380px;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.delete-account-card-header {
+	text-align: center;
+	margin-bottom: 1.5rem;
+	flex-shrink: 0;
+	width: 100%;
+}
+
+.delete-account-card-title {
+	color: #ff6b6b;
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.delete-account-card-subtitle {
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 0.9rem;
+	line-height: 1.4;
+}
+
+.delete-account-form-container {
+	width: 100%;
+}
+
+.delete-account-input-group {
+	margin-bottom: 1.5rem;
+	width: 100%;
+}
+
+.delete-account-input-label {
+	display: block;
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 0.9rem;
+	margin-bottom: 0.5rem;
+	font-weight: 500;
+}
+
+.delete-account-password-input-wrapper {
+	position: relative;
+	width: 100%;
+}
+
+.delete-account-input {
+	width: 100%;
+	padding: 0.875rem 2.5rem 0.875rem 0.875rem;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 0.625rem;
+	color: white;
+	font-size: 0.95rem;
+	transition: all 0.3s ease;
+	outline: none;
+}
+
+.delete-account-toggle-password-button {
+	position: absolute;
+	right: 0.75rem;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	color: rgba(255, 255, 255, 0.7);
+	cursor: pointer;
+	padding: 0.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+}
+
+.delete-account-toggle-icon {
+	font-size: 1.2rem;
+}
+
+.delete-account-warning-box {
+	background: rgba(255, 107, 107, 0.1);
+	border: 1px solid rgba(255, 107, 107, 0.2);
+	border-radius: 0.625rem;
+	padding: 0.75rem;
+	margin-bottom: 1.5rem;
+	flex-shrink: 0;
+}
+
+.delete-account-warning-text {
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 0.85rem;
+	line-height: 1.4;
+	margin: 0;
+	text-align: center;
+}
+
+.delete-account-actions-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+	flex-shrink: 0;
+}
+
+.delete-account-delete-button {
+	background: linear-gradient(145deg, #B00020 0%, #8A0000 100%);
+	border: none;
+	border-radius: 0.625rem;
+	padding: 0.875rem 1.5rem;
+	color: white;
+	font-size: 0.95rem;
+	font-weight: bold;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	transition: all 0.3s ease;
+	width: 100%;
+}
+
+.delete-account-button-text {
+	letter-spacing: 0.05em;
+}
+
+/* Estilos globais */
+.back-button:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+	transform: translateX(-2px);
+}
+
+.delete-button:hover:not(:disabled) {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(176, 0, 32, 0.4);
+}
+
+.delete-account-input:focus {
+	border-color: rgba(106, 17, 203, 0.5);
+	box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.2);
+}
+
+.toggle-password-button:hover {
+	color: white;
+	transform: translateY(-50%) scale(1.1);
+}
+
+.toggle-password-button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+/* Media Queries */
+@media (min-height: 700px) {
+	.delete-account-logo {
+		font-size: 2.25rem;
+	}
+	
+	.delete-account-card {
+		padding: 2rem;
+		max-width: 420px;
+	}
+	
+	.delete-account-card-title {
+		font-size: 1.75rem;
+	}
+	
+	.delete-account-card-subtitle {
+		font-size: 1rem;
+	}
+	
+	.delete-account-input {
+		padding: 1rem 3rem 1rem 1rem;
+		font-size: 1rem;
+	}
+	
+	.delete-account-delete-button {
+		padding: 1rem 1.75rem;
+		font-size: 1rem;
+	}
+}
+
+@media (max-height: 500px) {
+	.delete-account-header {
+		display: none;
+	}
+	
+	.delete-account-main-content {
+		padding: 0.25rem;
+	}
+	
+	.delete-account-card {
+		padding: 1rem;
+		max-width: 340px;
+	}
+	
+	.delete-account-card-title {
+		font-size: 1.25rem;
+	}
+	
+	.delete-account-card-subtitle {
+		font-size: 0.8rem;
+	}
+	
+	.delete-account-input {
+		padding: 0.75rem 2.5rem 0.75rem 0.75rem;
+		font-size: 0.85rem;
+	}
+	
+	.delete-account-warning-box {
+		padding: 0.5rem;
+		margin-bottom: 1rem;
+	}
+	
+	.delete-account-warning-text {
+		font-size: 0.75rem;
+	}
+	
+	.delete-account-delete-button {
+		padding: 0.75rem 1rem;
+		font-size: 0.85rem;
+	}
+}
+
+@media (max-width: 400px) {
+	.delete-account-logo {
+		font-size: 1.75rem;
+	}
+	
+	.delete-account-card {
+		max-width: 320px;
+	}
+}

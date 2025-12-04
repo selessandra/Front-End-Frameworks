@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import '../assets/Registerid.css';
+import { FiUser, FiArrowLeft, FiChevronRight, FiHash } from 'react-icons/fi';
 import api from "../services/api";
+import '../assets/Registerid.css';
 
 const backgroundImage = require('../assets/images/backgroundweb.jpg');
 
@@ -13,18 +14,14 @@ const RegisterId = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Obtém o ID do usuário que foi registrado
   useEffect(() => {
-    // Verifica se veio da tela de registro com dados
     const userData = location.state?.userData;
     
     if (userData?.id_usuario) {
       console.log('✅ ID do usuário recebido:', userData.id_usuario);
       setUserId(userData.id_usuario);
-      // Armazena no localStorage para persistência
       localStorage.setItem('temp_user_id', userData.id_usuario);
     } else {
-      // Tenta recuperar do localStorage se a página for recarregada
       const storedUserId = localStorage.getItem('temp_user_id');
       if (storedUserId) {
         setUserId(storedUserId);
@@ -34,11 +31,10 @@ const RegisterId = () => {
     }
   }, [location]);
 
-  // 🔒 Bloqueia caracteres inválidos e força maiúsculo
   const handleChangeClashId = (text) => {
     const formatted = text.replace(/[^a-zA-Z0-9]/g, "");
     setClashId(formatted.toUpperCase());
-    setError(''); // Limpa erro quando o usuário digita
+    setError('');
   };
 
   const handleRegisterId = async (e) => {
@@ -46,7 +42,6 @@ const RegisterId = () => {
     setLoading(true);
     setError('');
 
-    // Validações
     if (!clashId.trim()) {
       setError("Digite seu ID do Clash Royale!");
       setLoading(false);
@@ -75,7 +70,6 @@ const RegisterId = () => {
 
       console.log('✅ Jogador cadastrado:', response.data);
 
-      // Atualiza o usuário no localStorage se necessário
       const storedUser = localStorage.getItem('usuario');
       if (storedUser) {
         const user = JSON.parse(storedUser);
@@ -83,11 +77,10 @@ const RegisterId = () => {
         localStorage.setItem('usuario', JSON.stringify(user));
       }
 
-      // Limpa o ID temporário
       localStorage.removeItem('temp_user_id');
 
       alert("✅ Jogador cadastrado com sucesso!");
-      navigate('/'); // Redireciona para a tela de login
+      navigate('/');
 
     } catch (err) {
       console.error('❌ Erro ao cadastrar jogador:', err);
@@ -108,7 +101,6 @@ const RegisterId = () => {
     }
   };
 
-  // Submit com Enter
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !loading) {
       handleRegisterId(e);
@@ -116,81 +108,120 @@ const RegisterId = () => {
   };
 
   return (
-    <div className="container">
+    <div className="register-id-container">
       <div 
-        className="image-background"
+        className="background-image"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div className="viewcontainer">
-          
-          {/* HEADER */}
+        <div className="overlay" />
+        
+        <button 
+          onClick={() => navigate(-1)}
+          className="back-button"
+        >
+          <FiArrowLeft className="back-icon" />
+        </button>
+
+        <main className="main-content">
           <div className="header">
-            <h1 className="text-logo">Veasy</h1>
+            <h1 className="logo">
+              <span className="logo-gradient">CLASH</span>
+              <span className="logo-highlight">HUB</span>
+            </h1>
+            <p className="subtitle">Completar cadastro</p>
           </div>
 
-          {/* FORMULÁRIO */}
-          <div className="forms">
-            <h2 className="textocontainer">Completar Cadastro</h2>
-
-            {/* Informação do usuário */}
-            <div className="user-info">
-              <p className="user-info-text">
-                Etapa 2 de 2: Cadastrar Clash ID
-              </p>
-              <p className="user-info-subtext">
-                ID do usuário: <strong>{userId || 'Carregando...'}</strong>
+          <div className="card">
+            <div className="card-header">
+              <FiUser className="card-icon" />
+              <h2 className="card-title">Clash ID</h2>
+              <p className="card-subtitle">
+                Última etapa para completar seu cadastro
               </p>
             </div>
 
-            {/* Mensagem de erro */}
+            <div className="progress-container">
+              <div className="progress-bar">
+                <div className="progress-fill" />
+              </div>
+              <div className="progress-steps">
+                <span className="progress-step">1. Registro</span>
+                <span className="progress-step active-step">
+                  2. Clash ID
+                </span>
+              </div>
+            </div>
+
+            <div className="user-info">
+              <div className="user-info-item">
+                <span className="user-info-label">ID do usuário:</span>
+                <span className="user-info-value">
+                  {userId || 'Carregando...'}
+                </span>
+              </div>
+              <p className="user-info-text">
+                Digite seu Clash ID do Clash Royale abaixo
+              </p>
+            </div>
+
             {error && (
-              <div className="error-message">
-                {error}
+              <div className="error-container">
+                <span className="error-text">{error}</span>
               </div>
             )}
 
-            <form onSubmit={handleRegisterId}>
-              {/* CLASH ID */}
-              <div className="form-group">
-                <label className="campos">Clash ID:</label>
-                <input
-                  className="fieldID"
-                  type="text"
-                  placeholder="JGCUU99V2"
-                  value={clashId}
-                  onChange={(e) => handleChangeClashId(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  disabled={loading || !userId}
-                  maxLength={15}
-                  pattern="[A-Z0-9]+"
-                  title="Apenas letras maiúsculas e números"
-                  required
-                />
+            <div className="form-container">
+              <div className="input-group">
+                <label className="input-label">
+                  <FiHash className="label-icon" />
+                  Clash ID
+                </label>
+                <div className="input-wrapper">
+                  <input
+                    type="text"
+                    placeholder="Ex: JGCUU99V2"
+                    value={clashId}
+                    onChange={(e) => handleChangeClashId(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    disabled={loading || !userId}
+                    maxLength={15}
+                    className="input"
+                  />
+                  <div className="input-hint">
+                    Apenas letras e números (máx. 15 caracteres)
+                  </div>
+                </div>
               </div>
 
-              {/* BOTÃO CONFIRMAR */}
               <button 
-                className="button" 
-                type="submit"
-                disabled={loading || !userId}
+                onClick={handleRegisterId}
+                disabled={loading || !userId || clashId.length < 8}
+                className="confirm-button"
+                style={{ 
+                  opacity: (loading || !userId || clashId.length < 8) ? 0.5 : 1 
+                }}
               >
-                <span className="button-text">
-                  {loading ? 'Validando...' : 'Confirmar'}
-                </span>
+                {loading ? (
+                  <span className="loading-text">Validando...</span>
+                ) : (
+                  <>
+                    <FiChevronRight className="button-icon" />
+                    <span className="button-text">Finalizar Cadastro</span>
+                  </>
+                )}
               </button>
-            </form>
 
-            {/* VOLTAR */}
-            <div className="back-link-container">
-              <p className="back-text">
-                Problemas com o cadastro? 
+              <div className="back-container">
+                <p className="back-text">
+                  Problemas com o cadastro?
+                </p>
                 <Link to="/register" className="back-link">
                   Voltar ao registro
                 </Link>
-              </p>
+              </div>
             </div>
           </div>
-        </div>
+        </main>
       </div>
     </div>
   );

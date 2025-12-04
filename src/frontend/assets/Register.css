@@ -1,312 +1,439 @@
-/* Importar fontes - ajuste conforme seu projeto */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap');
-
-/* Container principal */
-.container {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+.register-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-/* Background image */
-.image-background {
-    width: 100%;
-    height: 100%;
+.register-background-image {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.register-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.register-back-button {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.register-back-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(-2px);
+}
+
+.register-back-icon {
+  font-size: 1.1rem;
+}
+
+.register-main-content {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
+}
+
+.register-logo {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.125rem;
+  text-shadow: 0 0 15px rgba(75, 22, 100, 0.8);
+}
+
+.register-logo-gradient {
+  background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.register-logo-highlight {
+  color: #ffd700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.register-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.register-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 0.875rem;
+  padding: 1.25rem;
+  width: 100%;
+  max-width: 380px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.register-card-header {
+  text-align: center;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.register-card-icon {
+  font-size: 1.75rem;
+  color: #ffd700;
+  margin-bottom: 0.375rem;
+}
+
+.register-card-title {
+  color: white;
+  font-size: 1.375rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.register-card-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.register-error-container {
+  background: rgba(255, 71, 87, 0.15);
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  border-radius: 0.625rem;
+  padding: 0.625rem;
+  margin-bottom: 0.875rem;
+  text-align: center;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.register-error-text {
+  color: #ff4757;
+  font-size: 0.75rem;
+}
+
+.register-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.register-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  flex-shrink: 0;
+}
+
+.register-password-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.register-input-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.register-label-icon {
+  font-size: 0.85rem;
+  color: #ffd700;
+}
+
+.register-strength-indicator {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.7rem;
+}
+
+.register-input {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.625rem;
+  padding: 0.625rem 0.875rem;
+  color: white;
+  font-size: 0.85rem;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.register-input:focus {
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+}
+
+.register-password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.register-toggle-button {
+  position: absolute;
+  right: 0.625rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+.register-toggle-button:hover:not(:disabled) {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.register-strength-bar-container {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0.125rem;
+}
+
+.register-strength-bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.register-requirements {
+  display: none;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.375rem;
+}
+
+.register-requirement-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.register-requirement-check {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.register-check-icon {
+  color: white;
+  font-size: 0.65rem;
+}
+
+.register-success-text {
+  color: #2ed573;
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-top: 0.125rem;
+}
+
+.register-button {
+  background: linear-gradient(145deg, #6a11cb 0%, #4B1664 100%);
+  border: none;
+  border-radius: 0.625rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  margin-top: 0.375rem;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.register-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);
+}
+
+.register-button-icon {
+  font-size: 1rem;
+}
+
+.register-button-text {
+  letter-spacing: 0.05em;
+}
+
+.register-loading-text {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.register-login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  margin-top: 0.75rem;
+  flex-shrink: 0;
+}
+
+.register-login-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+}
+
+.register-login-link {
+  color: #4B1664;
+  background: rgba(255, 215, 0, 0.9);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.register-login-link:hover {
+  background: rgba(255, 215, 0, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Media Queries */
+
+/* Em telas maiores (tela cheia/F11) mostra os requisitos */
+@media (min-height: 700px) {
+  .register-requirements {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  }
+  
+  .register-logo {
+    font-size: 2.25rem;
+  }
+  
+  .register-card {
+    padding: 1.5rem;
+    max-width: 420px;
+  }
+  
+  .register-card-icon {
+    font-size: 2rem;
+  }
+  
+  .register-card-title {
+    font-size: 1.5rem;
+  }
+  
+  .register-card-subtitle {
+    font-size: 0.85rem;
+  }
+  
+  .register-input {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .register-button {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+  }
 }
 
-/* Logo */
-.text-logo {
-    color: white;
-    font-size: 64px;
-    font-weight: 800;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    text-shadow: 4px 4px 5px #450693;
-    margin: 0;
-    padding: 0;
+/* Ajustes para telas muito pequenas */
+@media (max-height: 500px) {
+  .register-header {
+    display: none;
+  }
+  
+  .register-main-content {
+    padding: 0.25rem;
+  }
+  
+  .register-card {
+    padding: 0.875rem;
+    max-width: 340px;
+  }
+  
+  .register-card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .register-card-title {
+    font-size: 1.125rem;
+  }
+  
+  .register-form-container {
+    gap: 0.5rem;
+  }
+  
+  .register-input {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .register-login-container {
+    margin-top: 0.5rem;
+  }
 }
 
-/* Container do conteúdo */
-.viewcontainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 16px;
-    gap: 70px;
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* Título do formulário */
-.textocontainer {
-    font-size: 32px;
-    color: white;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-    margin-bottom: 30px;
-}
-
-/* Header */
-.header {
-    width: 300px;
-}
-
-/* Formulário */
-.forms {
-    background-color: rgba(11, 10, 10, 0.47);
-    width: 352px;
-    min-height: 500px;
-    border: 2px solid #EEEEEE66;
-    border-radius: 50px;
-    padding: 32px;
-    box-sizing: border-box;
-}
-
-/* Labels dos campos */
-.campos {
-    display: block;
-    font-size: 22px;
-    color: white;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-}
-
-/* Campos de input */
-.field {
-    border: 2px solid #EEEEEE66;
-    border-radius: 12px;
-    padding: 10px 12px;
-    color: #eeeeeeff;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: rgba(0, 0, 0, 0.3);
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.field:focus {
-    border-color: #211951;
-    box-shadow: 0 0 0 2px rgba(33, 25, 81, 0.2);
-    outline: none;
-}
-
-.field:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-/* Container para campos de senha */
-.password-input-container {
-    position: relative;
-    width: 100%;
-    margin-bottom: 5px;
-}
-
-.password-field {
-    padding-right: 40px;
-}
-
-/* Botão para mostrar/ocultar senha */
-.password-toggle {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #ccc;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 4px;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.password-toggle:hover:not(:disabled) {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.password-toggle:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-/* Dicas para senha */
-.password-hints {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    margin-top: 5px;
-    padding-left: 5px;
-}
-
-.password-hints small {
-    color: #aaaaaa;
-    font-size: 11px;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Botão principal */
-.button {
-    width: 120px;
-    background-color: #211951;
-    padding: 12px 8px;
-    margin-top: 32px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.button:hover:not(:disabled) {
-    background-color: #342a6d;
-    transform: translateY(-2px);
-}
-
-.button:active:not(:disabled) {
-    transform: translateY(0);
-}
-
-.button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.button-text {
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    text-align: center;
-    font-weight: 400;
-}
-
-/* Grupo do formulário */
-.form-group {
-    margin-bottom: 20px;
-}
-
-/* Mensagem de erro */
-.error-message {
-    background: rgba(255, 100, 100, 0.2);
-    border: 2px solid #ff5555;
-    color: #ffdddd;
-    padding: 12px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Link para login */
-.login-link-container {
-    margin-top: 25px;
-    text-align: center;
-}
-
-.login-text {
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    margin: 0;
-}
-
-.login-link {
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-    text-decoration: none;
-    margin-left: 5px;
-    transition: color 0.3s;
-}
-
-.login-link:hover {
-    color: #cccccc;
-    text-decoration: underline;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .forms {
-        width: 90%;
-        max-width: 352px;
-        padding: 24px;
-    }
-    
-    .text-logo {
-        font-size: 48px;
-    }
-    
-    .textocontainer {
-        font-size: 28px;
-    }
-    
-    .campos {
-        font-size: 18px;
-    }
-    
-    .forms {
-        min-height: 480px;
-    }
-}
-
-@media (max-width: 480px) {
-    .viewcontainer {
-        gap: 40px;
-        padding: 8px;
-    }
-    
-    .forms {
-        min-height: 460px;
-        padding: 20px;
-        border-radius: 30px;
-    }
-    
-    .button {
-        width: 100px;
-        padding: 10px 8px;
-    }
-    
-    .password-hints {
-        font-size: 10px;
-    }
-}
-
-/* Animações */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.forms {
-    animation: fadeIn 0.5s ease-out;
-}
-
-.error-message {
-    animation: fadeIn 0.3s ease-out;
+@media (max-width: 400px) {
+  .register-logo {
+    font-size: 1.75rem;
+  }
+  
+  .register-card {
+    max-width: 320px;
+  }
 }

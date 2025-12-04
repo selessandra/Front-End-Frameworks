@@ -1,184 +1,384 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* evita scroll e barras brancas */
-html, body, #root {
-  width: 100%;
-  height: 100%;
+.redefine-container {
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
-  background: black;
 }
 
-/* fundo */
-.bg {
-  position: absolute;
-  inset: 0;
-  background-image: url(' background-image: url("./images/backgroundweb.jpg");');
+.redefine-background {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
-/* overlay roxo */
-.overlay {
+.redefine-overlay {
   position: absolute;
-  inset: 0;
-  background-color: rgba(33, 25, 81, 0.4);
-  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
 }
 
-/* CONTEÚDO CENTRALIZADO NA TELA */
-.contentRed {
-  position: relative;
-  z-index: 2;
+.redefine-back-button {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;     
-  justify-content: center;  
-  height: 100%;
-  gap: 32px;             
-}
-
-/* título */
-.tittle {
-  font-size: 64px;
-  text-shadow: 2px 2px 4px purple;
-  margin: 0;                
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-
-}
-
-/* caixa */
-.inputcontainerRed {
-  background-color: rgba(0,0,0,0.25);
-  height: 400px;
-  width: 350px;
-  border-radius: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 16px;
-  gap: 16px;
-  backdrop-filter: blur(2px);
-  border: 2px solid #EEEEEE66;
-}
-
-
-
-/* subtítulo dentro da caixa */
-.inputcontainerRed h2 {
-  color: white;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  gap: 4px; 
-  font-weight: 550;
-  font-family: "Poppins", sans-serif;
-
-}
-
-.textRed {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.textRed p {
-  font-size: 14px;
-  color: #fff;
-  margin: 8px 0;
-  font-weight: 450;
-  font-family: "Poppins", sans-serif;
-  max-width: 300px;   /* encaixa igual ao Figma */
-}
-
-
-.inputcontainerRed p {
-  width: 100%;
-  display: block;
-  font-size: 16px;
-  color: #fff;
-  text-align: left;      
-  margin: 4px;
-  font-weight: 450; 
-  font-family: "Poppins", sans-serif;
-
-}
-
-
-/* inputs */
-.inputcontainerRed input {
-  padding: 12px;
-  border-radius: 12px;
-  border: 1.5px solid #EEEEEE66;
-  background-color: rgba(0,0,0,0.25);
-  color: #FFFFFF;
-  outline: none;
-  font-size: 16px;
-  width: 280px;
-  height: 36px;
-  font-family: "Poppins", sans-serif;
-
-}
-
-.inputcontainerRed input::placeholder {
-  color: rgba(255,255,255,0.7);
-  font-size: 16px;
-  font-weight: 550;
-}
-
-
-.inputcontainerRed button {
-  background-color: #211951;
-  color: #FFFFFF;
-  display: block;
-  text-align: center;
-  height: 36px;
-  width: 124px;
-  border-radius: 15px;
-  border-color: #211951;
-  align-items: center;
-  font-weight: 450;
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  justify-content: center; 
   cursor: pointer;
-  margin-top: 16px;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
 }
 
-.registerrouterRed {
-  font-size: 16px;
-  color: #fff;
-  text-align: left;     
-  margin: 2px;   
-  text-align: center;
-  font-weight: 450;
-  font-family: "Poppins", sans-serif;
-
+.redefine-back-icon {
+  font-size: 1.1rem;
 }
 
-.registerrouterRed h3 {
-  display: block;
-  font-size: 16px;
-  color: #fff;
+.redefine-main-content {
+  position: relative;
+  flex: 1;
   display: flex;
-  justify-content: center; 
-  align-items: center;    
-  font-weight: 450;   
-  font-family: "Poppins", sans-serif;
-  align-self: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  z-index: 1;
+  overflow: hidden;
 }
 
-.registerrouterRed a {
-  text-decoration-line: none;
-  color: #fff;
+.redefine-header {
   text-align: center;
-  font-weight: 700;
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
+}
+
+.redefine-logo {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.125rem;
+  text-shadow: 0 0 15px rgba(75, 22, 100, 0.8);
+}
+
+.redefine-logo-gradient {
+  background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.redefine-logo-highlight {
+  color: #ffd700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.redefine-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.redefine-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 0.875rem;
+  padding: 1.25rem;
+  width: 100%;
+  max-width: 380px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.redefine-card-header {
+  text-align: center;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.redefine-card-icon {
+  font-size: 1.75rem;
+  color: #ffd700;
+  margin-bottom: 0.375rem;
+}
+
+.redefine-card-title {
+  color: white;
+  font-size: 1.375rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.redefine-card-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.redefine-info-box {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 0.625rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.redefine-info-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin: 0;
+  text-align: center;
+}
+
+.redefine-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.redefine-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  flex-shrink: 0;
+}
+
+.redefine-input-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.redefine-label-icon {
+  font-size: 0.85rem;
+  color: #ffd700;
+}
+
+.redefine-input {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.625rem;
+  padding: 0.625rem 0.875rem;
+  color: white;
+  font-size: 0.85rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.redefine-input-hint {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.7rem;
+  margin-top: 0.25rem;
+}
+
+.redefine-send-button {
+  background: linear-gradient(145deg, #6a11cb 0%, #4B1664 100%);
+  border: none;
+  border-radius: 0.625rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  margin-top: 0.375rem;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.redefine-button-icon {
+  font-size: 1rem;
+}
+
+.redefine-button-text {
+  letter-spacing: 0.05em;
+}
+
+.redefine-login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  margin-top: 0.75rem;
+  flex-shrink: 0;
+}
+
+.redefine-login-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+}
+
+.redefine-login-link {
+  color: #4B1664;
+  background: rgba(255, 215, 0, 0.9);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Estilos de Hover */
+.back-button-hover:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(-2px);
+}
+
+.redefine-input:focus {
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+}
+
+.send-button-hover:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);
+}
+
+.login-link-hover:hover {
+  background: rgba(255, 215, 0, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Media Queries */
+
+/* Em telas maiores (tela cheia/F11) */
+@media (min-height: 700px) {
+  .redefine-logo {
+    font-size: 2.25rem;
+  }
+  
+  .redefine-card {
+    padding: 1.5rem;
+    max-width: 420px;
+  }
+  
+  .redefine-card-icon {
+    font-size: 2rem;
+  }
+  
+  .redefine-card-title {
+    font-size: 1.5rem;
+  }
+  
+  .redefine-card-subtitle {
+    font-size: 0.85rem;
+  }
+  
+  .redefine-info-box {
+    padding: 1rem;
+  }
+  
+  .redefine-info-text {
+    font-size: 0.8rem;
+  }
+  
+  .redefine-input {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .redefine-send-button {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-height: 500px) {
+  .redefine-header {
+    display: none;
+  }
+  
+  .redefine-main-content {
+    padding: 0.25rem;
+  }
+  
+  .redefine-card {
+    padding: 0.875rem;
+    max-width: 340px;
+  }
+  
+  .redefine-card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .redefine-card-title {
+    font-size: 1.125rem;
+  }
+  
+  .redefine-card-subtitle {
+    display: none;
+  }
+  
+  .redefine-info-box {
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .redefine-info-text {
+    font-size: 0.7rem;
+  }
+  
+  .redefine-form-container {
+    gap: 0.5rem;
+  }
+  
+  .redefine-input {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .redefine-send-button {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+  }
+  
+  .redefine-login-container {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .redefine-logo {
+    font-size: 1.75rem;
+  }
+  
+  .redefine-card {
+    max-width: 320px;
+  }
+  
+  .redefine-login-container {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
 }
