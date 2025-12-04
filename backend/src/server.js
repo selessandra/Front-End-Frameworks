@@ -12,6 +12,7 @@ import deckRoutes from "./routes/decks.js";
 
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
@@ -29,5 +30,5 @@ app.use("/decks", deckRoutes);
 app.use("/reset", resetRoutes);
 
 
-const PORT = 3000;
+const PORT = 3001;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));

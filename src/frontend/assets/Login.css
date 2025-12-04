@@ -1,7 +1,6 @@
 /* Importar fontes - ajuste conforme seu projeto */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap');
 
-/* Container principal */
 .container {
     width: 100vw;
     height: 100vh;
@@ -10,7 +9,6 @@
     overflow: hidden;
 }
 
-/* Background image */
 .image-background {
     width: 100%;
     height: 100%;
@@ -22,7 +20,6 @@
     background-repeat: no-repeat;
 }
 
-/* Logo */
 .text-logo {
     color: white;
     font-size: 64px;
@@ -34,7 +31,6 @@
     padding: 0;
 }
 
-/* Container do conteúdo */
 .viewcontainer {
     display: flex;
     flex-direction: column;
@@ -46,7 +42,6 @@
     max-width: 1200px;
 }
 
-/* Título do formulário */
 .textocontainer {
     font-size: 32px;
     color: white;
@@ -56,23 +51,20 @@
     margin-bottom: 30px;
 }
 
-/* Header */
 .header {
     width: 300px;
 }
 
-/* Formulário */
 .forms {
     background-color: rgba(11, 10, 10, 0.47);
     width: 352px;
-    min-height: 500px;
+    height: 458px;
     border: 2px solid #EEEEEE66;
     border-radius: 50px;
     padding: 32px;
     box-sizing: border-box;
 }
 
-/* Labels dos campos */
 .campos {
     display: block;
     font-size: 22px;
@@ -83,11 +75,10 @@
     font-weight: 400;
 }
 
-/* Campos de input */
 .field {
     border: 2px solid #EEEEEE66;
     border-radius: 12px;
-    padding: 10px 12px;
+    padding: 8px 12px;
     color: #eeeeeeff;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -95,32 +86,23 @@
     box-sizing: border-box;
     background-color: rgba(0, 0, 0, 0.3);
     outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.3s;
 }
 
 .field:focus {
     border-color: #211951;
-    box-shadow: 0 0 0 2px rgba(33, 25, 81, 0.2);
     outline: none;
 }
 
-.field:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-/* Container para campos de senha */
 .password-input-container {
     position: relative;
     width: 100%;
-    margin-bottom: 5px;
 }
 
 .password-field {
     padding-right: 40px;
 }
 
-/* Botão para mostrar/ocultar senha */
 .password-toggle {
     position: absolute;
     right: 10px;
@@ -130,45 +112,13 @@
     border: none;
     color: #ccc;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
     padding: 4px;
     z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
 }
 
-.password-toggle:hover:not(:disabled) {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.password-toggle:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-/* Dicas para senha */
-.password-hints {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    margin-top: 5px;
-    padding-left: 5px;
-}
-
-.password-hints small {
-    color: #aaaaaa;
-    font-size: 11px;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Botão principal */
 .button {
-    width: 120px;
+    width: 100px;
     background-color: #211951;
     padding: 12px 8px;
     margin-top: 32px;
@@ -178,22 +128,11 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s;
 }
 
-.button:hover:not(:disabled) {
+.button:hover {
     background-color: #342a6d;
-    transform: translateY(-2px);
-}
-
-.button:active:not(:disabled) {
-    transform: translateY(0);
-}
-
-.button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
 }
 
 .button-text {
@@ -204,51 +143,45 @@
     font-weight: 400;
 }
 
-/* Grupo do formulário */
-.form-group {
-    margin-bottom: 20px;
-}
-
-/* Mensagem de erro */
-.error-message {
-    background: rgba(255, 100, 100, 0.2);
-    border: 2px solid #ff5555;
-    color: #ffdddd;
-    padding: 12px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
+.forgot-password-link {
+    display: block;
+    font-size: 16px;
     font-family: 'Poppins', sans-serif;
-}
-
-/* Link para login */
-.login-link-container {
-    margin-top: 25px;
+    font-weight: 800;
+    color: white;
     text-align: center;
+    margin-top: 30px;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
-.login-text {
+.forgot-password-link:hover {
+    color: #ccc;
+    text-decoration: underline;
+}
+
+.register-text {
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     color: white;
-    margin: 0;
+    text-align: center;
+    margin-top: 30px;
 }
 
-.login-link {
+.register-link {
     color: white;
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
     text-decoration: none;
-    margin-left: 5px;
     transition: color 0.3s;
 }
 
-.login-link:hover {
-    color: #cccccc;
+.register-link:hover {
+    color: #ccc;
     text-decoration: underline;
 }
+
+
 
 /* Responsividade */
 @media (max-width: 768px) {
@@ -269,10 +202,6 @@
     .campos {
         font-size: 18px;
     }
-    
-    .forms {
-        min-height: 480px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -282,31 +211,8 @@
     }
     
     .forms {
-        min-height: 460px;
+        height: auto;
+        min-height: 400px;
         padding: 20px;
-        border-radius: 30px;
     }
-    
-    .button {
-        width: 100px;
-        padding: 10px 8px;
-    }
-    
-    .password-hints {
-        font-size: 10px;
-    }
-}
-
-/* Animações */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.forms {
-    animation: fadeIn 0.5s ease-out;
-}
-
-.error-message {
-    animation: fadeIn 0.3s ease-out;
 }

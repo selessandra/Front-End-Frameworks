@@ -9,6 +9,7 @@ import Redfined from "./frontend/pages/Redfined";
 import Registerid from './frontend/pages/Registerid';  
 import HomeDecker from './frontend/pages/HomeDecker';
 import HomePlayer from './frontend/pages/HomePlayer';
+import Login from "./frontend/pages/Login";
 
 export default function Router() {
   return (
@@ -23,6 +24,8 @@ export default function Router() {
       <Route path="/Redfined" element={<Redfined/>} />
       <Route path="/Registerid" element={<Registerid />} /> {/* Note: path minúsculo */}
       <Route path="/HomePlayer" element={<HomePlayer/>} />
+      <Route path="/Login" element={<Login />} />
+      
 
     </Routes>
   );
