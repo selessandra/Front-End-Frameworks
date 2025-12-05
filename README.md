@@ -68,15 +68,18 @@ git clone https://github.com/selessandra/Front-End-Frameworks.git
 Instale as dependências do front-end e back-end:
 
 npm install
+npm install react-hook-form 
+
 cd backend
 npm install
+npx prisma generate 
+npx prisma migrate
+
 
 
 Renomeie os arquivos .env.example para .env e configure as variáveis necessárias.
 
-Execute as migrations do Prisma no diretório backend:
 
-npx prisma migrate dev
 
 
 Inicie a aplicação:
