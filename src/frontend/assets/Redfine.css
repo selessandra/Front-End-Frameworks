@@ -1,3 +1,53 @@
+/* Estilos para mensagens */
+.redefine-message {
+  padding: 0.75rem;
+  border-radius: 0.625rem;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.redefine-message.success {
+  background-color: rgba(76, 175, 80, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  color: #4CAF50;
+}
+
+.redefine-message.error {
+  background-color: rgba(244, 67, 54, 0.2);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  color: #F44336;
+}
+
+/* Spinning animation */
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Loading state */
+button:disabled {
+  cursor: not-allowed !important;
+}
+
+/* Ajustes responsivos para mensagens */
+@media (max-height: 500px) {
+  .redefine-message {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+}
 .redefine-container {
   width: 100vw;
   height: 100vh;
