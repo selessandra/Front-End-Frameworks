@@ -1,37 +1,18 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { 
-  FiUser, 
-  FiGrid, 
-  FiSettings,
-  FiHelpCircle
-} from 'react-icons/fi';
+import React, { useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FiUser, FiGrid, FiSettings, FiHelpCircle } from 'react-icons/fi';
+import { usePlayer } from '../../contexts/PlayerContext';
 import '../assets/HomePlayer.css';
 
 export default function HomePlayer() {
   const navigate = useNavigate();
-  const location = useLocation();
-  
-  const [player, setPlayer] = useState({
-    nome: 'Jogador Clash',
-    clanName: 'Clã dos Campeões',
-    trofeus: 2450,
-    topTrofeus: 2800,
-    wins: 150,
-    losses: 75,
-    expLevel: 12,
-    deck: [
-      { icon: 'https://clashroyale.com/images/cards/full/minipekka.png' },
-      { icon: 'https://clashroyale.com/images/cards/full/musketeer.png' },
-      { icon: 'https://clashroyale.com/images/cards/full/fireball.png' },
-      { icon: 'https://clashroyale.com/images/cards/full/giant.png' },
-      { icon: 'https://clashroyale.com/images/cards/full/archers.png' },
-      { icon: null },
-      { icon: null },
-      { icon: null }
-    ],
-    photo: null
-  });
+  const {
+    player,
+    loading,
+    error,
+    loadPlayerData,
+    updatePhoto
+  } = usePlayer();
 
   const {
     nome,
@@ -45,6 +26,9 @@ export default function HomePlayer() {
     photo
   } = player;
 
+  // ===========================
+  //  TRATAMENTO DO BOTÃO VOLTAR
+  // ===========================
   useEffect(() => {
     const handleBeforeUnload = (e) => {
       const message = "Você deseja fechar o ClashHub?";
@@ -52,40 +36,23 @@ export default function HomePlayer() {
       return message;
     };
 
-    const handlePopState = () => {
-      if (window.confirm("Você deseja fechar o ClashHub?")) {
-        window.close();
-      } else {
-        window.history.pushState(null, '', window.location.pathname);
-      }
-    };
-
     window.addEventListener('beforeunload', handleBeforeUnload);
-    window.addEventListener('popstate', handlePopState);
-    
-    window.history.pushState(null, '', window.location.pathname);
     
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
-      window.removeEventListener('popstate', handlePopState);
     };
   }, []);
 
+  // ===========================
+  // CARREGA DADOS AO ENTRAR
+  // ===========================
   useEffect(() => {
-    const loadPlayerData = () => {
-      const savedData = localStorage.getItem('clashhub_player');
-      if (savedData) {
-        try {
-          setPlayer(JSON.parse(savedData));
-        } catch (error) {
-          console.error('Erro ao carregar dados do jogador:', error);
-        }
-      }
-    };
-
     loadPlayerData();
-  }, [location.pathname]);
+  }, []);
 
+  // ===========================
+  // ALTERAR FOTO
+  // ===========================
   const pickImage = useCallback(() => {
     const input = document.createElement('input');
     input.type = 'file';
@@ -97,18 +64,27 @@ export default function HomePlayer() {
         const reader = new FileReader();
         reader.onload = (event) => {
           const newPhoto = event.target.result;
-          const updatedPlayer = { ...player, photo: newPhoto };
-          setPlayer(updatedPlayer);
-          localStorage.setItem('clashhub_player', JSON.stringify(updatedPlayer));
+          updatePhoto(newPhoto);
         };
         reader.readAsDataURL(file);
       }
     };
     
     input.click();
-  }, [player]);
+  }, [updatePhoto]);
 
+  // ===========================
+  //  RENDERIZAÇÃO DO DECK
+  // ===========================
   const renderDeckGrid = useCallback(() => {
+    if (!deck || deck.length === 0) {
+      return (
+        <div className="deck-empty-message">
+          <p>Nenhum deck cadastrado</p>
+        </div>
+      );
+    }
+
     const cards = [...deck];
     while (cards.length < 8) cards.push({ icon: null });
 
@@ -117,13 +93,10 @@ export default function HomePlayer() {
     return (
       <div className="deck-grid-container">
         {rows.map((row, idx) => (
-          <div
-            key={`row-${idx}`}
-            className="deck-row"
-          >
+          <div key={`row-${idx}`} className="deck-row">
             {row.map((card, i) => (
               <div key={`card-${idx}-${i}`} className="card-box">
-                {card.icon ? (
+                {card?.icon ? (
                   <img
                     src={card.icon}
                     className="card-image-new"
@@ -146,20 +119,70 @@ export default function HomePlayer() {
     );
   }, [deck]);
 
+  // ===========================
+  //  MANUSEIO DE LOGOUT
+  // ===========================
+  const handleLogout = () => {
+    if (window.confirm('Deseja realmente sair?')) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('usuario');
+      localStorage.removeItem('clashhub_player');
+      navigate('/');
+    }
+  };
+
+  // ===========================
+  //  RENDERIZAÇÃO DE LOADING
+  // ===========================
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <div className="loading-spinner"></div>
+        <p>Carregando dados do jogador...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="error-container">
+        <h2>Erro ao carregar dados</h2>
+        <p>{error}</p>
+        <button onClick={loadPlayerData} className="retry-button">
+          Tentar novamente
+        </button>
+        <button onClick={handleLogout} className="logout-button">
+          Sair
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="home-player-app-container">
       <div 
         className="home-player-background-image"
         style={{ 
-          backgroundImage: `url(https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)` 
+          backgroundImage: `url(${require('../assets/images/backgroundweb.jpg')})` 
         }}
       >
         <div className="home-player-overlay" />
 
-        <h1 className="home-player-home-text">Perfil</h1>
+        <header className="home-player-header">
+          <h1 className="home-player-home-text">Perfil</h1>
+          <button 
+            onClick={handleLogout} 
+            className="logout-header-button"
+            aria-label="Sair"
+            title="Sair"
+          >
+            Sair
+          </button>
+        </header>
 
         <main className="home-player-home-container">
 
+          {/* INFO COMPACTA DO JOGADOR */}
           <div className="home-player-compact-header">
             <div className="home-player-photo-and-level">
               <div className="home-player-level-badge">
@@ -179,10 +202,7 @@ export default function HomePlayer() {
                     alt={`Foto de ${nome}`}
                     onError={(e) => {
                       e.target.onerror = null;
-                      const fallbackDiv = document.createElement('div');
-                      fallbackDiv.className = 'home-player-user-icon-fallback';
-                      fallbackDiv.innerHTML = '<FiUser />';
-                      e.target.parentElement.replaceChild(fallbackDiv, e.target);
+                      e.target.src = 'https://via.placeholder.com/100/4B1664/FFFFFF?text=Usuário';
                     }}
                   />
                 ) : (
@@ -197,11 +217,12 @@ export default function HomePlayer() {
               <h2 className="home-player-player-name">{nome}</h2>
               <p className="home-player-clan-text">
                 <span className="home-player-clan-label">Clã:</span> 
-                <span className="home-player-highlight"> {clanName}</span>
+                <span className="home-player-highlight"> {clanName || 'Sem clã'}</span>
               </p>
             </div>
           </div>
 
+          {/* ESTATÍSTICAS */}
           <div className="home-player-stats-container">
             <div className="home-player-stats-grid">
               <div className="home-player-stat-item-mini">
@@ -230,6 +251,7 @@ export default function HomePlayer() {
             </div>
           </div>
 
+          {/* DECK */}
           <section className="home-player-deck-wrapper">
             <h3 className="home-player-deck-title">Deck Atual</h3>
             {renderDeckGrid()}
@@ -237,6 +259,7 @@ export default function HomePlayer() {
 
         </main>
 
+        {/* NAVEGAÇÃO INFERIOR */}
         <footer className="home-player-bottom-bar">
           <button 
             onClick={() => navigate('/HomeDecker')}
