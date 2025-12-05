@@ -83,6 +83,9 @@ Inicie a aplicação:
 
 npm run dev
 
+*CASO NÃO TENHA CONTA NO CLASH, AQUI ESTÁ UMA CONTA EXISTENTE*:
+ID: #2RU2JPG08
+
 👥 Colaboradores do Projeto
 
 Alan Sérgio Rodrigues de Carvalho — 01697157
