@@ -99,7 +99,7 @@ function RedfineCod() {
         
         // Redirecionar para tela de nova senha
         setTimeout(() => {
-          navigate("/new-password");
+          navigate("/RedfinePassword");
         }, 1000);
       } else {
         setMessage(data.error || "Código inválido");
