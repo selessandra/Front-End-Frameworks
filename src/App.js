@@ -40,7 +40,7 @@ function App() {
             <Route path="/" element={<Login />} />
             
             {/* Rotas Públicas - Registro e Redefinição */}
-            <Route path="/register" element={<Register />} />
+            <Route path="/Register" element={<Register />} />
             <Route path="/Redfine" element={<Redfine />} />
             <Route path="/RedfineCod" element={<RedfineCod />} />
             <Route path="/RedfinePassword" element={<RedfinePassword />} />

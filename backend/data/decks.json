@@ -1,40 +1,40 @@
 {
-    "date": "2025-12-02",
+    "date": "2025-12-05",
     "data": {
-        "deck_id": "deck_28000001-26000049-26000003-26000018-26000022-26000012-26000033-28000008_container",
-        "data_name": "arrows,bats,giant-hero,mini-pekka-hero,minion-horde,skeleton-army-ev1,sparky,zap-ev1",
-        "name_desktop": "HeroGiant HeroMiniPekka Horde Bats",
-        "name_mobile": "HeroGiant HeroMiniPekka Horde Bats",
+        "deck_id": "deck_28000001-28000015-28000000-26000057-27000012-26000059-26000047-26000052_container",
+        "data_name": "arrows,barbarian-barrel,fireball,flying-machine,goblin-cage-ev1,royal-hogs,royal-recruits-ev1,zappies",
+        "name_desktop": "RHogs EvoRR FM Zappies",
+        "name_mobile": "RHogs EvoRR FM Zappies",
         "cards": [
             {
-                "alt": "Skeleton Army",
-                "card_key": "skeleton-army-ev1",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/skeleton-army-ev1.png"
+                "alt": "Goblin Cage",
+                "card_key": "goblin-cage-ev1",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/goblin-cage-ev1.png"
             },
             {
-                "alt": "Zap",
-                "card_key": "zap-ev1",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/zap-ev1.png"
+                "alt": "Royal Recruits",
+                "card_key": "royal-recruits-ev1",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/royal-recruits-ev1.png"
             },
             {
-                "alt": "Mini P.E.K.K.A",
-                "card_key": "mini-pekka-hero",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/mini-pekka-hero.png"
+                "alt": "Royal Hogs",
+                "card_key": "royal-hogs",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/royal-hogs.png"
             },
             {
-                "alt": "Giant",
-                "card_key": "giant-hero",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/giant-hero.png"
+                "alt": "Flying Machine",
+                "card_key": "flying-machine",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/flying-machine.png"
             },
             {
-                "alt": "Sparky",
-                "card_key": "sparky",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/sparky.png"
+                "alt": "Fireball",
+                "card_key": "fireball",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/fireball.png"
             },
             {
-                "alt": "Minion Horde",
-                "card_key": "minion-horde",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/minion-horde.png"
+                "alt": "Zappies",
+                "card_key": "zappies",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/zappies.png"
             },
             {
                 "alt": "Arrows",
@@ -42,23 +42,23 @@
                 "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/arrows.png"
             },
             {
-                "alt": "Bats",
-                "card_key": "bats",
-                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/bats.png"
+                "alt": "Barbarian Barrel",
+                "card_key": "barbarian-barrel",
+                "image": "https://cdns3.royaleapi.com/cdn-cgi/image/w=150,h=180,format=auto/static/img/cards/v8-7d088998/barbarian-barrel.png"
             }
         ],
-        "copy_link": "https://link.clashroyale.com/en?clashroyale://copyDeck?deck=26000012;28000008;26000018;26000003;26000033;26000022;28000001;26000049&tt=159000000&l=Royals",
-        "qr_code": "clashroyale://copyDeck?deck=26000012;28000008;26000018;26000003;26000033;26000022;28000001;26000049&tt=159000000&l=Royals",
+        "copy_link": "https://link.clashroyale.com/en?clashroyale://copyDeck?deck=27000012;26000047;26000059;26000057;28000000;26000052;28000001;28000015&tt=159000000&l=Royals",
+        "qr_code": "clashroyale://copyDeck?deck=27000012;26000047;26000059;26000057;28000000;26000052;28000001;28000015&tt=159000000&l=Royals",
         "desktop_table": {
-            "rating": "73",
+            "rating": "63",
             "usage_percent": "0.2%",
-            "wins_percent": "61.8%",
+            "wins_percent": "57.1%",
             "draw_percent": "0.0%",
-            "loss_percent": "38.2%",
-            "usage_absolute": "3,707",
-            "wins_absolute": "2,292",
+            "loss_percent": "42.9%",
+            "usage_absolute": "4,144",
+            "wins_absolute": "2,367",
             "draw_absolute": "0",
-            "loss_absolute": "1,415"
+            "loss_absolute": "1,777"
         }
     }
 }

@@ -94,7 +94,7 @@ const Register = () => {
       localStorage.setItem('temp_user_data', JSON.stringify(response.data));
 
       alert("✅ Usuário registrado com sucesso!");
-      navigate("/registerid", { 
+      navigate("/Registerid", { 
         state: { 
           userData: response.data 
         } 

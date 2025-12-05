@@ -985,3 +985,751 @@ button:active {
         transform: none;
     }
 }
+
+/* Adicione ao final do HomeDecker.css */
+
+/* Componentes Deck e Carousel */
+.deck-container,
+.deck-carousel {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  margin-bottom: 1rem;
+}
+
+.deck-title,
+.carousel-title {
+  color: #ffd700;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.deck-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.deck-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.deck-name {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.deck-player {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.deck-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.deck-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.stat-icon {
+  font-size: 1rem;
+}
+
+.stat-value {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.deck-cards-container {
+  margin-top: 0.5rem;
+}
+
+.cards-title,
+.deck-cards-title {
+  color: white;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.deck-cards-grid,
+.deck-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.deck-card-item,
+.carousel-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.deck-card-image,
+.carousel-card-image {
+  width: 50px;
+  height: 65px;
+  object-fit: contain;
+  border-radius: 0.25rem;
+}
+
+.deck-card-placeholder,
+.carousel-card-placeholder {
+  width: 50px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.25rem;
+}
+
+.placeholder-text {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.deck-card-info {
+  width: 100%;
+  text-align: center;
+}
+
+.card-name,
+.carousel-card-name {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deck-footer {
+  text-align: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.elixir-cost {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+.elixir-cost strong {
+  color: #00ff88;
+}
+
+/* Carousel Styles */
+.carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.carousel-counter {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+}
+
+.counter-text {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.carousel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.carousel-navigation {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.carousel-button {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.carousel-button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+.carousel-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.carousel-slide {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.slide-header {
+  text-align: center;
+}
+
+.slide-deck-name {
+  color: #ffd700;
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.slide-player {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.slide-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.slide-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.indicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s;
+}
+
+.indicator.active {
+  background: #ffd700;
+  transform: scale(1.2);
+}
+
+.indicator:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Loading and Error States */
+.deck-loading,
+.carousel-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.deck-loading .loading-spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #ffd700;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.deck-error,
+.deck-empty {
+  text-align: center;
+  padding: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.error-message {
+  color: #ff6b6b;
+}
+
+.no-cards-message {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  padding: 1rem;
+}
+
+/* HomeDecker Header */
+.home-decker-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.refresh-button {
+  position: absolute;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.refresh-button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.refresh-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+/* Error Container */
+.error-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+              url(https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  z-index: 1;
+  position: relative;
+}
+
+.error-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.error-container h2 {
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.error-container p {
+  margin-bottom: 2rem;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.error-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.retry-button,
+.back-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.retry-button:hover,
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.retry-button {
+  background: rgba(75, 22, 100, 0.7);
+  border-color: rgba(75, 22, 100, 0.9);
+}
+
+.back-button {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Loading Container Updates */
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loading-text {
+  color: white;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Deck Empty Message */
+.deck-empty-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  padding: 2rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .deck-cards-grid,
+  .deck-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .deck-stat,
+  .slide-stat {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .carousel-button {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .refresh-button {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .retry-button,
+  .back-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .deck-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.25rem;
+  }
+  
+  .deck-card-image,
+  .carousel-card-image {
+    width: 40px;
+    height: 52px;
+  }
+  
+  .carousel-navigation {
+    gap: 0.5rem;
+  }
+  
+  .error-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .retry-button,
+  .back-button {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+  }
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Adicione estes estilos no HomeDecker.css */
+
+/* Estilos para o placeholder */
+.card-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4B1664 0%, #2d0e3c 100%);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    transparent 100%);
+  animation: shimmer 2s infinite linear;
+}
+
+.help-icon {
+  width: 24px;
+  height: 24px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 4px;
+  z-index: 1;
+}
+
+.placeholder-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 8px;
+  text-align: center;
+  padding: 0 4px;
+  z-index: 1;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Animação de shimmer para placeholder */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Melhorias no card-box */
+.card-box {
+  width: 100px;
+  height: 120px;
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-box:hover {
+  transform: translateY(-3px);
+  border-color: #ffd700;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajustes no card-image-new para melhor renderização */
+.card-image-new {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 3px;
+  background: rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.card-image-new:hover {
+  transform: scale(1.05);
+}
+
+/* Ajustes responsivos para placeholders */
+@media (max-width: 768px) {
+  .card-box {
+    width: 65px;
+    height: 85px;
+  }
+  
+  .help-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .placeholder-label {
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-box {
+    width: 58px;
+    height: 78px;
+  }
+  
+  .help-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .placeholder-label {
+    font-size: 6px;
+  }
+}
+
+/* Estilos para erro de imagem */
+.card-image-error {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4B1664 0%, #2d0e3c 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 10px;
+  text-align: center;
+  padding: 8px;
+}
+
+.card-image-error::before {
+  content: '🃏';
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+/* Para imagens que falham ao carregar, garantir que o placeholder apareça */
+img.card-image-new[src*="placeholder"] {
+  background: linear-gradient(135deg, #4B1664 0%, #2d0e3c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Suporte para modo escuro */
+@media (prefers-color-scheme: dark) {
+  .card-placeholder {
+    background: linear-gradient(135deg, #2d0e3c 0%, #1a0824 100%);
+  }
+  
+  .card-box {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* Redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+  .card-placeholder::before {
+    animation: none;
+  }
+  
+  .card-box:hover {
+    transform: none;
+  }
+  
+  .card-image-new:hover {
+    transform: none;
+  }
+}
+
+/* Adicione ao HomeDecker.css */
+
+.no-data-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 200px;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.deck-empty-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 150px;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+}

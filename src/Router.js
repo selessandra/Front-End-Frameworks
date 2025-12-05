@@ -17,7 +17,7 @@ export default function Router() {
   return (
     <Routes>
       <Route path="/HomeDecker" element={<HomeDecker/>} />
-      <Route path="/register" element={<Register />} />
+      <Route path="/Register" element={<Register />} />
       <Route path="/Redfine" element={<Redfine />} />
       <Route path="/RedfineCod" element={<RedfineCod />} />
       <Route path="/RedfinePassword" element={<RedfinePassword/>} />
