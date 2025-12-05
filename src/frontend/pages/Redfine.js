@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FiMail, FiArrowLeft, FiSend, FiLock } from 'react-icons/fi';
+import { FiMail, FiArrowLeft, FiSend, FiLock, FiLoader } from 'react-icons/fi';
 import '../assets/Redfine.css';
 
 const background = require('../assets/images/backgroundweb.jpg');
@@ -8,8 +8,11 @@ const background = require('../assets/images/backgroundweb.jpg');
 function Redfine() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    // Validações
     if (!email.trim()) {
       alert("Digite seu email!");
       return;
@@ -20,12 +23,47 @@ function Redfine() {
       alert("Digite um email válido!");
       return;
     }
-    
-    navigate("/RedfineCod");
+
+    setLoading(true);
+    setMessage("");
+
+    try {
+      const response = await fetch("http://localhost:3001/reset/request-code", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Armazenar email no localStorage para usar na próxima tela
+        localStorage.setItem("resetEmail", email);
+        
+        // Mostrar mensagem de sucesso
+        setMessage("Código enviado com sucesso! Verifique seu email.");
+        
+        // Navegar para a tela de código após 2 segundos
+        setTimeout(() => {
+          navigate("/RedfineCod");
+        }, 2000);
+      } else {
+        setMessage(data.error || "Erro ao enviar código");
+        alert(data.error || "Erro ao enviar código. Tente novamente.");
+      }
+    } catch (error) {
+      console.error("Erro:", error);
+      setMessage("Erro de conexão com o servidor");
+      alert("Erro de conexão. Verifique sua internet.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !loading) {
       handleSubmit();
     }
   };
@@ -41,6 +79,7 @@ function Redfine() {
         <button 
           onClick={() => navigate(-1)}
           className="redefine-back-button back-button-hover"
+          disabled={loading}
         >
           <FiArrowLeft className="redefine-back-icon" />
         </button>
@@ -82,20 +121,37 @@ function Redfine() {
                   onChange={(e) => setEmail(e.target.value)}
                   onKeyPress={handleKeyPress}
                   className="redefine-input"
+                  disabled={loading}
                 />
                 <div className="redefine-input-hint">
                   O código será enviado para este email
                 </div>
               </div>
 
+              {/* Mensagem de status */}
+              {message && (
+                <div className={`redefine-message ${message.includes('sucesso') ? 'success' : 'error'}`}>
+                  {message}
+                </div>
+              )}
+
               <button 
                 onClick={handleSubmit}
-                disabled={!email}
-                className={`redefine-send-button ${email ? 'send-button-hover' : ''}`}
-                style={{ opacity: !email ? 0.5 : 1 }}
+                disabled={!email || loading}
+                className={`redefine-send-button ${email && !loading ? 'send-button-hover' : ''}`}
+                style={{ opacity: (!email || loading) ? 0.5 : 1 }}
               >
-                <FiSend className="redefine-button-icon" />
-                <span className="redefine-button-text">Enviar Código</span>
+                {loading ? (
+                  <>
+                    <FiLoader className="redefine-button-icon spinning" />
+                    <span className="redefine-button-text">Enviando...</span>
+                  </>
+                ) : (
+                  <>
+                    <FiSend className="redefine-button-icon" />
+                    <span className="redefine-button-text">Enviar Código</span>
+                  </>
+                )}
               </button>
 
               <div className="redefine-login-container">

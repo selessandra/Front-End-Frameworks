@@ -6,7 +6,7 @@ import Redfine from './frontend/pages/Redfine';
 import RedfineCod from './frontend/pages/RedfineCod'; 
 import RedfinePassword from './frontend/pages/RedfinePassword'; 
 import Redfined from './frontend/pages/Redfined'; 
-import RegisterId from './frontend/pages/Registerid';  // Note: Import correto
+import Registerid from './frontend/pages/Registerid';  
 import HomeDecker from './frontend/pages/HomeDecker';
 import HomePlayer from './frontend/pages/HomePlayer';
 import Login from "./frontend/pages/Login";
@@ -22,7 +22,7 @@ function App() {
       const currentPath = window.location.pathname;
       
       // Limpa dados temporários apenas se não estiver no fluxo de registro
-      if (!currentPath.includes('/register') && !currentPath.includes('/Redfine')) {
+      if (!currentPath.includes('/Register') && !currentPath.includes('/Redfine')) {
         localStorage.removeItem('temp_user_id');
         localStorage.removeItem('temp_user_data');
       }
@@ -41,21 +41,13 @@ function App() {
             
             {/* Rotas Públicas - Registro e Redefinição */}
             <Route path="/Register" element={<Register />} />
+            <Route path="/registerid" element={<Registerid />} /> {/* REMOVE ProtectedRoute */}
             <Route path="/Redfine" element={<Redfine />} />
             <Route path="/RedfineCod" element={<RedfineCod />} />
             <Route path="/RedfinePassword" element={<RedfinePassword />} />
             <Route path="/Redfined" element={<Redfined />} />
             
             {/* Rotas Protegidas - Requer autenticação */}
-            <Route 
-              path="/Registerid" 
-              element={
-                <ProtectedRoute>
-                  <RegisterId />
-                </ProtectedRoute>
-              } 
-            />
-            
             <Route 
               path="/HomePlayer" 
               element={
