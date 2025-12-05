@@ -21,7 +21,7 @@ function DeleteAccount() {
 			setLoading(true);
 			
 			// Substitua esta chamada pela sua API web
-			const response = await fetch('/api/usuarios/delete-with-password', {
+			 const response = await fetch('http://localhost:3001/usuarios/delete-with-password', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
